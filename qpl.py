@@ -23,21 +23,12 @@ def qpl(file_path):
     return df
 
 #get manufacturer's name
-# global df
-# n=0
-# for subdf in pd.read_csv(qpl,chunksize=10000):
-#     if n==0:
-#         df=subdf['Manufacturer'].drop_duplicates()
-#     elif n!=0:
-#         df.append(subdf['Manufacturer'].drop_duplicates())
-#     n+=1
-# df=df.drop_duplicates()
-# df=df.sort_values()
-# df=df.reset_index()
-# df=df.drop(['index'],axis=1)
+# only read the manufacturer column
+def getManufacturers(file_path):
 
-#option 1: find manufacturer
-#df[df['Manufacturer'].str.contains('Shenzhen')]
+    manufacturers=pd.read_csv(file_path,usecols=['Manufacturer'])
+    manufacturers=manufacturers.drop_duplicates()
 
-#option 2: convert the data frame to a list and use a dropdown menu to select
-#manufacturer
+    manufacturers=sorted(list(manufacturers.Manufacturer),key=str.lower)
+
+    return manufacturers
