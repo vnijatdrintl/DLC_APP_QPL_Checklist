@@ -90,14 +90,14 @@ root.mainloop()
 #
 # save_file_path=filedialog.askopenfilename(initialdir='U:\\DLC\\app_qpl_checklist')
 #
-# with open(save_file_path,'a'):
-#     book=openpyxl.load_workbook(save_file_path)
-#     writer = pd.ExcelWriter(save_file_path,engine='openpyxl')
-#     writer.book=book
-#     writer.sheets = dict((ws.title, ws) for ws in book.worksheets)
-#     qpl_df.to_excel(writer, 'OEM Products', index=False)
-#     app_tracker_df.to_excel(writer, 'OEM Applications', index=False)
-#     writer.save()
+with open(save_file_path,'a'):
+    book=openpyxl.load_workbook(save_file_path)
+    writer = pd.ExcelWriter(save_file_path,engine='openpyxl')
+    writer.book=book
+    writer.sheets = dict((ws.title, ws) for ws in book.worksheets)
+    qpl_df.to_excel(writer, 'OEM Products', index=False)
+    app_tracker_df.to_excel(writer, 'OEM Applications', index=False)
+    writer.save()
 #
 # end=time.time()
 # print(end-start)
