@@ -12,9 +12,12 @@ def oemProducts(file_path, manufacturer):
                 continue
             df=subdf
         elif n!=0:
-            df.append(subdf[subdf['Manufacturer']==manufacturer])
+            subdf = subdf[subdf['Manufacturer']==manufacturer]
+            if subdf.shape[0]==0:
+                continue
+            df = df.append(subdf[subdf['Manufacturer']==manufacturer])
         n+=1
-    df = df.drop_duplicates()
+    # df = df.drop_duplicates()
     df = df.reset_index()
     df = df.drop(['index'],axis=1)
 
@@ -31,9 +34,12 @@ def plProducts(file_path, manufacturer):
                 continue
             df=subdf
         elif n!=0:
-            df.append(subdf[subdf['Manufacturer']==manufacturer])
+            subdf = subdf[subdf['Manufacturer']==manufacturer]
+            if subdf.shape[0]==0:
+                continue
+            df = df.append(subdf[subdf['Manufacturer']==manufacturer])
         n+=1
-    df = df.drop_duplicates()
+    # df = df.drop_duplicates()
     df = df.reset_index()
     df = df.drop(['index'],axis=1)
 
@@ -45,7 +51,7 @@ def app_tracker(file_path,manufacturer):
     xls=pd.ExcelFile(file_path)
     df=pd.read_excel(file_path,sheet_name='Applications')
     df=df[df['Manufacturer']==manufacturer]
-    df=df.drop_duplicates()
+    # df=df.drop_duplicates()
     df=df.reset_index()
     df=df.drop(['index'],axis=1)
 

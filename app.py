@@ -1,7 +1,6 @@
 import pandas as pd
 import tkinter as tk
 import openpyxl
-from openpyxl.utils.dataframe import dataframe_to_rows
 import qpl_app, time, os
 from tkinter import *
 from tkinter import filedialog
